@@ -1,182 +1,89 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Placar Copa Rei do Éden</title>
 <style>
 * { box-sizing: border-box; }
-
 html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  font-family: Arial, sans-serif;
-  color: white;
-  overflow: hidden;
+  margin: 0; width: 100%; height: 100%;
+  background: transparent; font-family: Arial, sans-serif;
+  color: white; overflow: hidden;
 }
-
-:root {
-  --gold: #d8b35a;
-  --black: #111111;
-  --red: #e53935;
-}
-
-#scoreboard {
-  position: absolute;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: stretch;
-  filter: drop-shadow(0 4px 8px #0008);
-}
-
-.team {
-  background: rgba(15,15,15,.96);
-  border-top: 3px solid var(--gold);
-  min-width: 190px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 19px;
-  font-weight: bold;
-}
-
-.score {
-  background: var(--gold);
-  color: #111;
-  min-width: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  font-weight: 900;
-}
-
-.clockbox {
-  background: #191919;
-  border-top: 3px solid var(--gold);
-  min-width: 105px;
-  padding: 7px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#clock {
-  font-size: 24px;
-  font-weight: 900;
-  font-variant-numeric: tabular-nums;
-}
-
-#period {
-  color: var(--gold);
-  font-size: 10px;
-  font-weight: bold;
-  margin-top: 3px;
-}
+:root { --gold:#d8b35a; --red:#e53935; }
 
 #brand {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  white-space: nowrap;
+  position:absolute; top:12px; left:50%;
+  transform:translateX(-50%); color:var(--gold);
+  font-size:12px; font-weight:900; letter-spacing:3px;
+  white-space:nowrap;
 }
-
 #live {
-  position: absolute;
-  top: 38px;
-  right: 25px;
-  background: var(--red);
-  padding: 7px 10px;
-  border-radius: 3px;
-  font-size: 12px;
-  font-weight: bold;
+  position:absolute; top:38px; right:25px;
+  background:var(--red); padding:7px 10px;
+  border-radius:3px; font-size:12px; font-weight:bold;
 }
+#scoreboard {
+  position:absolute; top:35px; left:50%;
+  transform:translateX(-50%); display:flex;
+  align-items:stretch; filter:drop-shadow(0 4px 8px #0008);
+}
+.team {
+  background:rgba(15,15,15,.96);
+  border-top:3px solid var(--gold);
+  min-width:190px; padding:12px 16px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:19px; font-weight:bold;
+}
+.score {
+  background:var(--gold); color:#111; min-width:55px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:32px; font-weight:900;
+}
+.clockbox {
+  background:#191919; border-top:3px solid var(--gold);
+  min-width:105px; padding:7px; display:flex;
+  flex-direction:column; justify-content:center; align-items:center;
+}
+#clock { font-size:24px; font-weight:900; font-variant-numeric:tabular-nums; }
+#period { color:var(--gold); font-size:10px; font-weight:bold; margin-top:3px; }
 
 #goal {
-  display: none;
-  position: absolute;
-  top: 130px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--gold);
-  color: #111;
-  border: 3px solid #111;
-  padding: 12px 35px;
-  font-size: 38px;
-  font-weight: 900;
-  font-style: italic;
+  display:none; position:absolute; top:130px; left:50%;
+  transform:translateX(-50%); background:var(--gold);
+  color:#111; border:3px solid #111; padding:12px 35px;
+  font-size:38px; font-weight:900; font-style:italic;
 }
-
 #controls {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  width: 290px;
-  padding: 14px;
-  background: rgba(15,15,15,.97);
-  border: 1px solid var(--gold);
-  border-radius: 8px;
-  font-size: 13px;
+  position:absolute; left:20px; bottom:20px; width:290px;
+  padding:14px; background:rgba(15,15,15,.97);
+  border:1px solid var(--gold); border-radius:8px; font-size:13px;
 }
-
-h3 {
-  color: var(--gold);
-  margin: 0 0 10px;
-}
-
-label {
-  display: block;
-  margin-top: 8px;
-  margin-bottom: 4px;
-}
-
+h3 { color:var(--gold); margin:0 0 10px; }
+label { display:block; margin-top:8px; margin-bottom:4px; }
 input, select {
-  width: 100%;
-  padding: 7px;
-  background: #292929;
-  color: white;
-  border: 1px solid #666;
-  border-radius: 4px;
+  width:100%; padding:7px; background:#292929; color:white;
+  border:1px solid #666; border-radius:4px;
 }
-
-.buttons {
-  display: flex;
-  gap: 5px;
-  margin-top: 8px;
-}
-
+.buttons { display:flex; gap:5px; margin-top:8px; }
 button {
-  flex: 1;
-  padding: 8px 5px;
-  background: var(--gold);
-  color: #111;
-  border: 0;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
+  flex:1; padding:8px 5px; background:var(--gold); color:#111;
+  border:0; border-radius:4px; font-weight:bold; cursor:pointer;
 }
+button.dark { background:#333; color:white; }
+#status { font-size:11px; color:#ddd; margin-top:9px; }
 
-button.dark {
-  background: #333;
-  color: white;
-}
-
-.hidden #controls {
-  display: none;
+@media(max-width:700px) {
+  .team { min-width:100px; padding:9px 8px; font-size:13px; }
+  .score { min-width:38px; font-size:24px; }
+  .clockbox { min-width:78px; }
+  #clock { font-size:19px; }
+  #live { right:8px; top:8px; }
 }
 </style>
 </head>
-
 <body>
 
 <div id="brand">COPA REI DO ÉDEN</div>
@@ -185,12 +92,10 @@ button.dark {
 <div id="scoreboard">
   <div class="team" id="teamA">TIME A</div>
   <div class="score" id="scoreA">0</div>
-
   <div class="clockbox">
     <div id="clock">20:00</div>
     <div id="period">1º TEMPO</div>
   </div>
-
   <div class="score" id="scoreB">0</div>
   <div class="team" id="teamB">TIME B</div>
 </div>
@@ -199,20 +104,16 @@ button.dark {
 
 <div id="controls">
   <h3>CONTROLE DO PLACAR</h3>
-
   <label>Nome do time A</label>
   <input id="inputA" value="TIME A">
-
   <label>Nome do time B</label>
   <input id="inputB" value="TIME B">
-
   <button onclick="updateNames()">Atualizar nomes</button>
 
   <div class="buttons">
     <button onclick="changeScore('A',1)">+ Gol A</button>
     <button class="dark" onclick="changeScore('A',-1)">− Gol A</button>
   </div>
-
   <div class="buttons">
     <button onclick="changeScore('B',1)">+ Gol B</button>
     <button class="dark" onclick="changeScore('B',-1)">− Gol B</button>
@@ -230,15 +131,14 @@ button.dark {
     <button onclick="startClock()">Iniciar</button>
     <button class="dark" onclick="pauseClock()">Pausar</button>
   </div>
-
   <div class="buttons">
     <button class="dark" onclick="resetClock()">Resetar 20:00</button>
     <button onclick="toggleGoal()">GOL!</button>
   </div>
-
   <div class="buttons">
     <button class="dark" onclick="toggleControls()">Ocultar controles</button>
   </div>
+  <div id="status">Conectando ao Firebase...</div>
 </div>
 
 <script type="module">
@@ -253,7 +153,8 @@ const firebaseConfig = {
   projectId: "placar-rei-do-eden",
   storageBucket: "placar-rei-do-eden.firebasestorage.app",
   messagingSenderId: "275014190425",
-  appId: "1:275014190425:web:ee2e2ea049d0a0dfef7848"
+  appId: "1:275014190425:web:ee2e2ea049d0a0dfef7848",
+  measurementId: "G-P314X765W6"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -261,7 +162,7 @@ const auth = getAuth(app);
 const db = getDatabase(app);
 const placarRef = ref(db, "placar");
 
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(location.search);
 const modoControle = params.get("controle") === "1";
 
 if (!modoControle) {
@@ -280,8 +181,9 @@ let estado = {
   goalUntil: 0
 };
 
-let timerVisual = null;
-let recebendoAtualizacao = false;
+let autenticado = false;
+let primeiraLeitura = false;
+let gravando = false;
 
 function tempoAtual() {
   if (estado.running && estado.startedAt) {
@@ -289,45 +191,53 @@ function tempoAtual() {
       estado.remaining - (Date.now() - estado.startedAt) / 1000
     ));
   }
-  return Math.max(0, estado.remaining);
+  return Math.max(0, Number(estado.remaining) || 0);
 }
 
 function desenhar() {
-  document.getElementById("teamA").textContent = estado.teamA;
-  document.getElementById("teamB").textContent = estado.teamB;
-  document.getElementById("scoreA").textContent = estado.scoreA;
-  document.getElementById("scoreB").textContent = estado.scoreB;
+  document.getElementById("teamA").textContent = estado.teamA || "TIME A";
+  document.getElementById("teamB").textContent = estado.teamB || "TIME B";
+  document.getElementById("scoreA").textContent = estado.scoreA ?? 0;
+  document.getElementById("scoreB").textContent = estado.scoreB ?? 0;
 
   const t = tempoAtual();
   document.getElementById("clock").textContent =
     String(Math.floor(t / 60)).padStart(2, "0") + ":" +
     String(t % 60).padStart(2, "0");
 
-  document.getElementById("period").textContent = estado.period;
+  document.getElementById("period").textContent = estado.period || "1º TEMPO";
   document.getElementById("goal").style.display =
     estado.goalUntil > Date.now() ? "block" : "none";
 
   if (modoControle) {
-    if (document.activeElement.id !== "inputA")
-      document.getElementById("inputA").value = estado.teamA;
-    if (document.activeElement.id !== "inputB")
-      document.getElementById("inputB").value = estado.teamB;
-
-    document.getElementById("periodSelect").value = estado.period;
+    if (document.activeElement !== document.getElementById("inputA"))
+      document.getElementById("inputA").value = estado.teamA || "TIME A";
+    if (document.activeElement !== document.getElementById("inputB"))
+      document.getElementById("inputB").value = estado.teamB || "TIME B";
+    document.getElementById("periodSelect").value = estado.period || "1º TEMPO";
   }
+}
+
+function status(mensagem) {
+  document.getElementById("status").textContent = mensagem;
 }
 
 async function salvar() {
-  if (!modoControle || !auth.currentUser) return;
+  if (!modoControle || !autenticado || gravando) return;
+  gravando = true;
   try {
     await set(placarRef, estado);
+    status("Conectado • placar sincronizado");
   } catch (erro) {
-    console.error("Erro ao salvar placar:", erro);
+    status("Erro ao salvar: " + erro.code);
+    console.error(erro);
+  } finally {
+    gravando = false;
   }
 }
 
-function alterar(patch) {
-  estado = { ...estado, ...patch };
+function alterar(mudancas) {
+  estado = { ...estado, ...mudancas };
   desenhar();
   salvar();
 }
@@ -341,29 +251,9 @@ function atualizarNomes() {
 
 function mudarGol(time, valor) {
   const chave = time === "A" ? "scoreA" : "scoreB";
-  alterar({ [chave]: Math.max(0, estado[chave] + valor) });
+  alterar({ [chave]: Math.max(0, Number(estado[chave] || 0) + valor) });
 }
-window.updateNames = atualizarNomes;
 
-window.changeScore = function(team, amount) {
-  mudarGol(team, amount);
-};
-
-window.startClock = iniciar;
-window.pauseClock = pausar;
-window.resetClock = resetar;
-
-window.updatePeriod = function() {
-  alterar({
-    period: document.getElementById("periodSelect").value
-  });
-};
-
-window.toggleGoal = gol;
-
-window.toggleControls = function() {
-  document.getElementById("controls").style.display = "none";
-};
 function iniciar() {
   const t = tempoAtual();
   if (estado.running || t <= 0) return;
@@ -382,63 +272,44 @@ function gol() {
   alterar({ goalUntil: Date.now() + 5000 });
 }
 
-document.getElementById("namesBtn")?.addEventListener("click", atualizarNomes);
-document.getElementById("plusA")?.addEventListener("click", () => mudarGol("A", 1));
-document.getElementById("minusA")?.addEventListener("click", () => mudarGol("A", -1));
-document.getElementById("plusB")?.addEventListener("click", () => mudarGol("B", 1));
-document.getElementById("minusB")?.addEventListener("click", () => mudarGol("B", -1));
-document.getElementById("periodSelect")?.addEventListener("change", e => alterar({ period: e.target.value }));
-document.getElementById("startBtn")?.addEventListener("click", iniciar);
-document.getElementById("pauseBtn")?.addEventListener("click", pausar);
-document.getElementById("resetBtn")?.addEventListener("click", resetar);
-document.getElementById("goalBtn")?.addEventListener("click", gol);
-document.getElementById("hideBtn")?.addEventListener("click", () => {
+/* Disponibiliza as funções para os onclick do HTML */
+window.updateNames = atualizarNomes;
+window.changeScore = mudarGol;
+window.startClock = iniciar;
+window.pauseClock = pausar;
+window.resetClock = resetar;
+window.updatePeriod = function() {
+  alterar({ period: document.getElementById("periodSelect").value });
+};
+window.toggleGoal = gol;
+window.toggleControls = function() {
   document.getElementById("controls").style.display = "none";
-});
+};
 
 signInAnonymously(auth).then(() => {
+  autenticado = true;
+  status(modoControle ? "Autenticado • carregando placar..." : "Conectado");
   onValue(placarRef, snapshot => {
-    recebendoAtualizacao = true;
+    primeiraLeitura = true;
     const remoto = snapshot.val();
+
     if (remoto) {
       estado = { ...estado, ...remoto };
       desenhar();
     } else if (modoControle) {
       salvar();
     }
-    recebendoAtualizacao = false;
-  }, erro => console.error("Erro ao ler placar:", erro));
-
-  if (modoControle) {
-    document.getElementById("controls").style.display = "";
-  }
+  }, erro => {
+    status("Erro ao ler: " + erro.code);
+    console.error(erro);
+  });
 }).catch(erro => {
-  console.error("Erro de autenticação Firebase:", erro);
-  alert("Não foi possível conectar ao Firebase. Verifique a autenticação anônima e as regras do banco.");
+  status("Falha no login: " + erro.code);
+  console.error(erro);
 });
 
-timerVisual = setInterval(desenhar, 250);
+setInterval(desenhar, 250);
 desenhar();
-  window.changeScore = function(team, amount) {
-  const key = team === "A" ? "scoreA" : "scoreB";
-  alterar({
-    [key]: Math.max(0, Number(estado[key] || 0) + amount)
-  });
-};
-
-window.updateNames = atualizarNomes;
-window.startClock = iniciar;
-window.pauseClock = pausar;
-window.resetClock = resetar;
-window.updatePeriod = function() {
-  alterar({
-    period: document.getElementById("periodSelect").value
-  });
-};
-window.toggleGoal = gol;
-window.toggleControls = function() {
-  document.getElementById("controls").style.display = "none";
-};
 </script>
 </body>
 </html>
