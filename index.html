@@ -419,6 +419,26 @@ signInAnonymously(auth).then(() => {
 
 timerVisual = setInterval(desenhar, 250);
 desenhar();
+  window.changeScore = function(team, amount) {
+  const key = team === "A" ? "scoreA" : "scoreB";
+  alterar({
+    [key]: Math.max(0, Number(estado[key] || 0) + amount)
+  });
+};
+
+window.updateNames = atualizarNomes;
+window.startClock = iniciar;
+window.pauseClock = pausar;
+window.resetClock = resetar;
+window.updatePeriod = function() {
+  alterar({
+    period: document.getElementById("periodSelect").value
+  });
+};
+window.toggleGoal = gol;
+window.toggleControls = function() {
+  document.getElementById("controls").style.display = "none";
+};
 </script>
 </body>
 </html>
